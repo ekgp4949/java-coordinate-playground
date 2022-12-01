@@ -1,3 +1,5 @@
+package Coordinate;
+
 public class Line {
 
     private final double length;

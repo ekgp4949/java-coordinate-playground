@@ -1,4 +1,4 @@
-package axis;
+package Coordinate.axis;
 
 public class YAxis {
     private final int location;

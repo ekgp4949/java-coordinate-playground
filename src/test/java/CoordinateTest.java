@@ -1,5 +1,6 @@
-import axis.XAxis;
-import axis.YAxis;
+import Coordinate.*;
+import Coordinate.axis.XAxis;
+import Coordinate.axis.YAxis;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
