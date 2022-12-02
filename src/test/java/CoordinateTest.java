@@ -1,10 +1,13 @@
-import Coordinate.*;
-import Coordinate.axis.XAxis;
-import Coordinate.axis.YAxis;
+import coordinate.Coordinate;
+import coordinate.axis.XAxis;
+import coordinate.axis.YAxis;
+import coordinate.figure.Figure;
+import coordinate.figure.FigureFactory;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
-import static org.assertj.core.api.Assertions.offset;
 
 
 public class CoordinateTest {
@@ -36,13 +39,25 @@ public class CoordinateTest {
     }
 
     @Test
+    void calculateDistanceByFigureFactory() {
+        Coordinate firstCoordinate = Coordinate.create(new XAxis(1), new YAxis(1));
+        Coordinate secondCoordinate = Coordinate.create(new XAxis(2), new YAxis(2));
+
+        FigureFactory figureFactory = new FigureFactory();
+        Figure figure = figureFactory.createFigure(List.of(firstCoordinate, secondCoordinate));
+
+        double result = figure.getCalculateResult();
+        assertThat(result).isEqualTo(1.414, offset(0.00099));
+    }
+
+    @Test
     void calculateLineDistance() {
         Coordinate firstCoordinate = Coordinate.create(new XAxis(1), new YAxis(1));
         Coordinate secondCoordinate = Coordinate.create(new XAxis(2), new YAxis(2));
 
-        Line line = CoordinateCalculator.getLine(firstCoordinate, secondCoordinate);
+        double result = CoordinateCalculator.calculate(List.of(firstCoordinate, secondCoordinate));
 
-        assertThat(line.length()).isEqualTo(1.414, offset(0.00099));
+        assertThat(result).isEqualTo(1.414, offset(0.00099));
     }
 
     @Test

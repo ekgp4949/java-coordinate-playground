@@ -1,6 +1,6 @@
 package util;
 
-import Coordinate.Coordinate;
+import coordinate.Coordinate;
 
 import java.util.ArrayList;
 import java.util.List;

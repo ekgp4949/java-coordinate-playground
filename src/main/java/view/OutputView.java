@@ -1,6 +1,7 @@
 package view;
 
-import Coordinate.Line;
+import coordinate.figure.Figure;
+import coordinate.figure.Line;
 import util.InputCoordinates;
 
 import java.math.BigDecimal;
@@ -10,11 +11,11 @@ import java.util.List;
 public class OutputView {
 
     private final InputCoordinates inputCoordinates;
-    private final Line line;
+    private final Figure figure;
 
-    public OutputView(InputCoordinates inputCoordinates, Line line) {
+    public OutputView(InputCoordinates inputCoordinates, Figure figure) {
         this.inputCoordinates = inputCoordinates;
-        this.line = line;
+        this.figure = figure;
     }
 
     public void print() {
@@ -55,8 +56,6 @@ public class OutputView {
             System.out.println();
         }
 
-        System.out.println("두 점 사이의 거리는 "+ BigDecimal.valueOf(line.length())
-                                                   .setScale(6, RoundingMode.HALF_UP)
-                                                   .doubleValue());
+        System.out.println(figure.toString());
     }
 }

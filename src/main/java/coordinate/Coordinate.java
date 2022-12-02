@@ -1,7 +1,7 @@
-package Coordinate;
+package coordinate;
 
-import Coordinate.axis.XAxis;
-import Coordinate.axis.YAxis;
+import coordinate.axis.XAxis;
+import coordinate.axis.YAxis;
 
 public class Coordinate {
 

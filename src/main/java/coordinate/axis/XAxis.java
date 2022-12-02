@@ -1,4 +1,4 @@
-package Coordinate.axis;
+package coordinate.axis;
 
 public class XAxis {
     private final int location;

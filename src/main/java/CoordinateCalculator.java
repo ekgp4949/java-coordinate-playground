@@ -1,5 +1,6 @@
-import Coordinate.Coordinate;
-import Coordinate.Line;
+import coordinate.Coordinate;
+import coordinate.figure.Figure;
+import coordinate.figure.FigureFactory;
 import util.InputCoordinates;
 import util.ScannerUtil;
 import view.InputView;
@@ -22,20 +23,24 @@ public class CoordinateCalculator {
         }
     }
 
-    public static void execute(ScannerUtil scannerUtil) {
+    private static void execute(ScannerUtil scannerUtil) {
         InputView inputView = new InputView();
         inputView.start();
 
         InputCoordinates inputCoordinates = scannerUtil.getCoordinatesFromScanner();
 
         List<Coordinate> coordinates = inputCoordinates.getCoordinates();
-        Line line = getLine(coordinates.get(0), coordinates.get(1));
 
-        OutputView outputView = new OutputView(inputCoordinates, line);
+        FigureFactory figureFactory = new FigureFactory();
+        Figure figure = figureFactory.createFigure(coordinates);
+
+        OutputView outputView = new OutputView(inputCoordinates, figure);
         outputView.print();
     }
 
-    public static Line getLine(Coordinate firstCoordinate, Coordinate secondCoordinate) {
-        return new Line(firstCoordinate.calculateDistanceTo(secondCoordinate));
+    public static double calculate(List<Coordinate> coordinates) {
+        FigureFactory figureFactory = new FigureFactory();
+        Figure figure = figureFactory.createFigure(coordinates);
+        return figure.getCalculateResult();
     }
 }
